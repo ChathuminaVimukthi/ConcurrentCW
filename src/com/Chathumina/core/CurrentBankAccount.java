@@ -33,15 +33,15 @@ public class CurrentBankAccount implements BankAccount {
     }
 
     @Override
-    public void deposit(Transaction t) {
+    public synchronized void deposit(Transaction t) {
         int depositAmount = t.getAmount();
         this.accountBalance += depositAmount;
-        this.statement.addTransaction(this.cusId, depositAmount, this.accountBalance);
+        this.statement.addTransaction(t.getCID(), depositAmount, this.accountBalance);
         notifyAll();
     }
 
     @Override
-    public void withdrawal(Transaction t) {
+    public synchronized void withdrawal(Transaction t) {
         int withdrawAmount = t.getAmount();
         while (withdrawAmount > this.accountBalance) {
             try {
@@ -53,7 +53,7 @@ public class CurrentBankAccount implements BankAccount {
         }
 
         this.accountBalance -= withdrawAmount;
-        this.statement.addTransaction(this.cusId, withdrawAmount, this.accountBalance);
+        this.statement.addTransaction(t.getCID(), withdrawAmount, this.accountBalance);
     }
 
     @Override
