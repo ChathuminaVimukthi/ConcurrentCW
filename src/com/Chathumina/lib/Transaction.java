@@ -9,7 +9,7 @@ package com.Chathumina.lib;
  * Date:	25/10/19
  ************************************************************************ */
 
-class Transaction
+public class Transaction
 {
     private final String CustomerID ;
     private final int    amount ;
