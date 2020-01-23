@@ -12,60 +12,15 @@ public class Student extends Thread {
         this.currentBankAccount = currentBankAccount;
     }
 
-    public void payInternetBill(){
-        Transaction internetBill = new Transaction(this.stName, 3000);
-        currentBankAccount.withdrawal(internetBill);
-        System.out.println("{Student}: Withdrawal transaction for : " + internetBill);
-        try {
-            sleep( (int)(Math.random() * 100) ) ;
+    public void makeTransaction(String type, int amount){
+        Transaction internetBill = new Transaction(this.stName, amount);
+        if(type.equalsIgnoreCase("add")){
+            currentBankAccount.deposit(internetBill);
+//            System.out.println("{Student}: Deposit transaction for : " + internetBill);
+        }else{
+            currentBankAccount.withdrawal(internetBill);
+//            System.out.println("{Student}: Withdrawal transaction for : " + internetBill);
         }
-        catch (InterruptedException e) { }
-    }
-
-    public void payPhoneBill(){
-        Transaction phoneBill = new Transaction(this.stName, 1000);
-        currentBankAccount.withdrawal(phoneBill);
-        System.out.println("{Student}: Withdrawal transaction for : " + phoneBill);
-        try {
-            sleep( (int)(Math.random() * 100) ) ;
-        }
-        catch (InterruptedException e) { }
-    }
-
-    public void payForShopping(){
-        Transaction shoppingBill = new Transaction(this.stName, 6000);
-        currentBankAccount.withdrawal(shoppingBill);
-        System.out.println("{Student}: Withdrawal transaction for : " + shoppingBill);
-        try {
-            sleep( (int)(Math.random() * 100) ) ;
-        }
-        catch (InterruptedException e) { }
-    }
-
-    public void winLottery(){
-        Transaction winLottery = new Transaction(this.stName, 10000);
-        currentBankAccount.deposit(winLottery);
-        System.out.println("{Student}: Deposit transaction for : " + winLottery);
-        try {
-            sleep( (int)(Math.random() * 100) ) ;
-        }
-        catch (InterruptedException e) { }
-    }
-
-    public void depositCash(){
-        Transaction savingsDeposit = new Transaction(this.stName, 2000);
-        currentBankAccount.deposit(savingsDeposit);
-        System.out.println("{Student}: Deposit transaction for : " + savingsDeposit);
-        try {
-            sleep( (int)(Math.random() * 100) ) ;
-        }
-        catch (InterruptedException e) { }
-    }
-
-    public void anotherDeposit(){
-        Transaction anotherDeposit = new Transaction(this.stName, 500);
-        currentBankAccount.deposit(anotherDeposit);
-        System.out.println("{Student}: Deposit transaction for : " + anotherDeposit);
         try {
             sleep( (int)(Math.random() * 100) ) ;
         }
@@ -75,14 +30,14 @@ public class Student extends Thread {
     @Override
     public void run() {
         System.out.println("---Transactions Started by Student---");
-        payInternetBill();
-        payPhoneBill();
-        payForShopping();
-        winLottery();
-        depositCash();
-        anotherDeposit();
+        makeTransaction("subtract", 3000);
+        makeTransaction("subtract", 1000);
+        makeTransaction("subtract", 6000);
+        makeTransaction("add", 10000);
+        makeTransaction("add", 2000);
+        makeTransaction("add", 500);
 
-        currentBankAccount.printStatement();
+        //currentBankAccount.printStatement();
 
         System.out.println("---Transactions Terminated by Student---");
     }

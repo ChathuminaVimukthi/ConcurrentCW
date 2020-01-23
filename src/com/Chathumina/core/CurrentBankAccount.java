@@ -34,6 +34,7 @@ public class CurrentBankAccount implements BankAccount {
 
     @Override
     public synchronized void deposit(Transaction t) {
+        System.out.println(t.toString() + " Deposit success...");
         int depositAmount = t.getAmount();
         this.accountBalance += depositAmount;
         this.statement.addTransaction(t.getCID(), depositAmount, this.accountBalance);
@@ -51,6 +52,7 @@ public class CurrentBankAccount implements BankAccount {
             } catch (InterruptedException e) {
             }
         }
+        System.out.println(t.toString()+" Withdrawal success...");
 
         this.accountBalance -= withdrawAmount;
         this.statement.addTransaction(t.getCID(), withdrawAmount, this.accountBalance);

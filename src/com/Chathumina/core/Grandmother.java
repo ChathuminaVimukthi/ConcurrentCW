@@ -15,7 +15,7 @@ public class Grandmother extends Thread {
     public void birthdayTopup(){
         Transaction birthdayGift = new Transaction(this.gName, 5000);
         currentBankAccount.deposit(birthdayGift);
-        System.out.println("{Grandmother}: Deposit transaction for : " + birthdayGift);
+//        System.out.println("{Grandmother}: Deposit transaction for : " + birthdayGift);
         try {
             sleep( (int)(Math.random() * 100) ) ;
         }
@@ -25,7 +25,7 @@ public class Grandmother extends Thread {
     public void christmasTopup(){
         Transaction christmasGift = new Transaction(this.gName, 3000);
         currentBankAccount.deposit(christmasGift);
-        System.out.println("{Grandmother}: Deposit transaction for : " + christmasGift);
+//        System.out.println("{Grandmother}: Deposit transaction for : " + christmasGift);
         try {
             sleep( (int)(Math.random() * 100) ) ;
         }

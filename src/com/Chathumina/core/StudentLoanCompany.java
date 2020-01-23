@@ -18,7 +18,7 @@ public class StudentLoanCompany extends Thread {
         for (int i = 0; i < 3; i++){
             Transaction loanCompanyDeposit= new Transaction(this.companyName, 20000);
             currentBankAccount.deposit(loanCompanyDeposit);
-            System.out.println("{LoanCompany}: Deposit transaction for : " + loanCompanyDeposit);
+//            System.out.println("{LoanCompany}: Deposit transaction for : " + loanCompanyDeposit);
             try {
                 sleep( (int)(Math.random() * 100) ) ;
             }

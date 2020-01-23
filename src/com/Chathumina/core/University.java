@@ -18,7 +18,7 @@ public class University extends Thread {
         for (int i = 0; i < 3; i++){
             Transaction universityWithdraw = new Transaction(this.uName, 15000);
             currentBankAccount.withdrawal(universityWithdraw);
-            System.out.println("{University}: Withdrawal transaction for : " + universityWithdraw);
+//            System.out.println("{University}: Withdrawal transaction for : " + universityWithdraw);
             try {
                 sleep( (int)(Math.random() * 100) ) ;
             }
